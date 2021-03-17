@@ -1,0 +1,19 @@
+FROM node:10.15.2-alpine
+RUN apk update && \
+    apk add git
+# set working directory
+RUN mkdir /var/www/sheraspace/admin_sheraspace_ui -p
+WORKDIR /var/www/sheraspace/admin_sheraspace_ui
+
+# add `/usr/src/app/node_modules/.bin` to $PATH
+ENV PATH /var/www/sheraspace/admin_sheraspace_ui/node_modules/.bin:$PATH
+RUN env NODE_OPTIONS=--max_old_space_size=8096
+# install and cache app dependencies
+COPY package.json /var/www/sheraspace/admin_sheraspace_ui/package.json
+ADD . /var/www/sheraspace/admin_sheraspace_ui
+RUN apk --no-cache add --virtual native-deps \
+  g++ gcc libgcc libstdc++ linux-headers make python && \
+  npm install --quiet node-gyp -g &&\
+  npm install --quiet && \
+  apk del native-deps
+RUN npm install

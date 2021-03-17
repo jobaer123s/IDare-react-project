@@ -1,0 +1,443 @@
+body{
+
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+
+}
+.cardPaper{
+    height: 397px;
+    width: 234px
+}
+
+.cardDesign{
+    height: 249px;
+}
+
+.cardImg{
+    width: 100%;
+    height: 118px;
+}
+
+.cardImg2{
+    width: 30%;
+    height: 105px;
+}
+
+.cardImg1{
+    height: 118px;
+}
+
+
+.cardSetting{
+    height: 200px;
+}
+
+.cardSetting:hover{
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2);
+    transition: transform .7s;
+}
+
+/*.cardSetting:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: box-shadow .2s;
+}*/
+
+
+.cardConfig{
+    height:43px;
+}
+.cardDes{
+    text-align:center ;
+    margin:0;
+    font-size: 11px;
+}
+.cardTitle {
+    margin-top: 100px;
+    text-align: center;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+
+}
+.cardTitle2{
+    text-align: center;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.arman{
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+.designImg{
+    width:33%;
+    height: 63px;
+    margin-left: 61px;
+    margin-top: 33px;
+    border-radius: 35px
+}
+.experience p {
+    color: #797373;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 31px;
+}
+
+/* menu setting  */
+
+.dropbtn {
+    background-color: transparent;
+    color: #EF5350;
+    font-size: 11px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+
+}
+.nav{
+
+    position: absolute;
+    top: 92px;
+    left: 151px;
+
+}
+.nav li{
+    display: inline-block;
+    position: relative;
+
+
+}
+.nav li a{
+    padding: 10px 0px;
+    display: block;
+    color: #EF5350;
+    margin: 0;
+    font-size: 12px;
+    transition: all 0.3s;
+    text-decoration: none;
+
+}
+
+
+.account li a{
+    padding: 10px 30px;
+    background-color: #fff;
+    display: block;
+    color: #222222;
+    margin: 0;
+    font-size: 12px;
+    transition: all 0.3s;
+    border-bottom: 1px solid #ccc;
+
+}
+.nav li:hover > a{
+    color: #EF5350;
+}
+.nav li li{
+    display: block;
+}
+.nav li ul{
+    position: absolute;
+    top:30%;
+    left: -40px;
+    display: none;
+    width: 217px;
+    padding-top: 12px;
+    z-index: 1;
+}
+
+.nav li:hover > ul{
+    display: block;
+}
+
+.nav li li ul{
+    left: -130%;
+    top: 0;
+    width: 214px
+}
+.nav li li li ul{
+    left: -109%;
+    top: 0;
+}
+
+.nav li li li .design{
+    left: -121%;
+    top: 0;
+}
+.nav li li:hover > ul{
+    display: block;
+}
+
+
+/* dropdown end */
+
+/* billing part */
+
+.quotationName {
+    width: 23%;
+    height: 50px;
+    margin-top: 24px;
+    margin-left: 15px;
+    border-radius: 33px;
+    background-color: #bbb5b5;
+    padding: 19px 9px;
+    font-size: 12px;
+    color: #fff
+}
+
+
+
+.cardDraft {
+    /* text-align: center; */
+    background-color: #bccc37;
+    padding: 5px 13px;
+    border-radius: 3px;
+    color: #fff;
+    width: 117px;
+    font-size: 12px;
+    margin-top: 10px;
+}
+.cardDrafts {
+    /* text-align: center; */
+    background-color: #FFBF00;
+    width: fit-content;
+    padding: 5px 13px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 10px!important;
+    margin: 0 auto;
+}
+
+.followup {
+    /* text-align: center; */
+    background-color: green;
+    width: fit-content;
+    padding: 5px 13px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 10px!important;
+    margin: 0 auto;
+}
+
+.cardDrafts4 {
+    /* text-align: center; */
+    background-color: #EF5350;
+    width: fit-content;
+    padding: 5px 13px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-top: 10px!important;
+    margin: 0 auto;
+}
+
+.cardDrafts1 {
+    /* text-align: center; */
+    background-color: grey;
+    width: fit-content;
+    padding: 5px 13px;
+    border-radius: 3px;
+    /* margin-left: 72px; */
+    color: #fff;
+    font-size: 12px;
+    margin-top: 10px!important;
+    margin: 0 auto;
+}
+
+.cardDraftsOpportunity {
+    /* text-align: center; */
+    background-color: grey;
+    width: fit-content;
+    padding: 5px 13px;
+    border-radius: 3px;
+    /* margin-left: 72px; */
+    color: #fff;
+    font-size: 12px;
+    margin: 0 auto;
+}
+
+.cardDrafts10 {
+    /* text-align: center; */
+    background-color: grey;
+    width: fit-content;
+    padding: 5px 13px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-right: 9px;
+}
+
+.cardDrafts110 {
+    /* text-align: center; */
+    background-color: grey;
+    width: fit-content;
+    padding: 5px 13px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-right: 9px;
+    margin-left: 56px;
+}
+
+.cardDrafts2 {
+    /* text-align: center; */
+    background-color: grey;
+    width: fit-content;
+    padding: 5px 13px;
+    border-radius: 3px;
+    margin-left: 90px;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 0;
+}
+.cardDraftsProject {
+    /* text-align: center; */
+    background-color: grey;
+    width: fit-content;
+    padding: 5px 13px;
+    border-radius: 3px;
+    margin-left: 90px;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 0;
+}
+.cardQuotation:hover{
+    background-color: #f8f5f5 !important;
+    transition-delay: .2s;
+
+}
+
+.userAccount:hover{
+    background-color: #f7f8f8 !important;
+    transition-delay: .2s;
+
+}
+
+.loginButton:hover{
+    background-color: #0057ca  !important;
+
+}
+
+
+.dropdownContent {
+    display: none;
+    position: absolute;
+    background-color:rgb(239, 83, 80);
+    min-width: 246px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    left: 198px;
+    height: 157px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 5px
+}
+
+.dropdownlist:hover .dropdownContent {
+    display: block;
+}
+
+.disable button {
+    border-radius: 3px;
+    background-color: rgb(239, 83, 80);
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    width: 16.4%;
+    height: 40px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.disableCampaignButton button {
+    width: 300px;
+    appearance: none;
+    border-radius: 5px;
+    background-color: #EF5350;;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    height: 40px;
+    margin-top: 1px;
+    margin-bottom: 60px;
+    cursor: pointer;
+}
+
+.disableCampaignButton button:disabled {
+    background-color: #ffa490;
+    color: #fff;
+    border:0;
+    cursor: no-drop !important;
+}
+.disable button:disabled {
+    background-color: #ffa490;
+    color: #fff;
+    border:0;
+    cursor: no-drop !important;
+}
+
+.jobPublish{
+    box-shadow: 0 0 0 0 !important;
+    padding: 0px 0px !important;
+    color: #fff !important;
+    background:rgb(96, 174, 109) !important;
+    width: 80px !important;
+    text-transform: capitalize !important;
+}
+
+.publish{
+    box-shadow: 0 0 0 0 !important;
+    padding: 0px 0px !important;
+    color: #fff !important;
+    background:rgb(96, 174, 109) !important;
+    width: 92px !important;
+    text-transform: capitalize !important;
+
+}
+
+.jobUnpublish{
+    box-shadow: 0 0 0 0 !important;
+    padding: 0px 0px !important;
+    color: #fff !important;
+    background: #ada86b  !important;
+    width: 80px !important;
+    text-transform: capitalize !important;
+}
+
+.unpublish{
+    box-shadow: 0 0 0 0 !important;
+    padding: 0px 0px !important;
+    color: #fff !important;
+    background: #ada86b  !important;
+    width: 92px !important;
+    text-transform: capitalize !important;
+
+}
+
+
+.jobDetailsShow:hover + .jobDetailsHide {
+    display: block;
+
+}
+
+.jobDetailsHide{
+    display: none;
+}
+
+
+::-webkit-scrollbar {
+    width: 6px;
+
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}

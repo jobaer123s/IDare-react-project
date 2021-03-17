@@ -1,0 +1,599 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+body{
+    margin:0;
+    /*overflow: hidden;*/
+    /*background: url(./images/color3.jpg);*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: auto;
+}
+*,:after,:before{box-sizing:border-box}
+.clearfix:after,.clearfix:before{content:'';display:table}
+.clearfix:after{clear:both;display:block}
+a{color:inherit;text-decoration:none}
+.loginWrap{
+    width:100%;
+    max-width:525px;
+    min-height:500px;
+    position:relative;
+
+}
+
+.loginFullPage{
+    width:800px;
+    margin: 0 auto;
+
+}
+.rightReserved{
+    font-size: 12px;
+    color: #ccc;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 135px;
+}
+
+.rightReservedSignUp{
+    font-size: 12px;
+    color: #ccc;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 26px;
+}
+
+.optionStyle{
+    width: 100%;
+    height: 29px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    background: #e0dfdf63;
+    border: 0;
+    margin-left: 0;
+    height: 41px;
+    margin-bottom: 15px;
+    color:#808080;
+    outline:none
+}
+
+.backgroundChangerColor {
+    background: #1373a0;
+    height: 735px;
+    color:#fff;
+    padding: 10px
+
+}
+.backgroundText {
+   font-weight: 400;
+   text-align: justify;
+}
+
+.backgroundChanger {
+    background: url(./images/vote.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+    height: 735px;
+
+
+}
+.backgroundChanger::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 60, 134, 0.24);
+    z-index: -1;
+}
+/*.backgroundImageFull {*/
+/*    background: url(./images/color.jpg);*/
+/*    background-size: cover;*/
+/*    background-repeat: no-repeat;*/
+/*    position: relative;*/
+/*    z-index: 1;*/
+/*    height: 735px;*/
+/*}*/
+/*.backgroundImageFull::before {*/
+/*    position: absolute;*/
+/*    content: "";*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    background-color: rgba(0, 60, 134, 0.24);*/
+/*    z-index: -1;*/
+/*}*/
+
+.loginHtml{
+    width:100%;
+    height:100%;
+    position:absolute;
+    padding:70px 70px 40px 70px;
+}
+.signUpHtml{
+    width:100%;
+    height:100%;
+    position:absolute;
+    padding:30px 70px 40px 70px;
+}
+.loginHtml{
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    position:absolute;
+    transition:all .4s linear;
+}
+.signUpHtml{
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    position:absolute;
+    transition:all .4s linear;
+}
+.loginHtml .signIn,
+.login-form .check{
+    display:none;
+}
+
+.signUpHtml .signIn,
+.login-form .check{
+    display:none;
+}
+.loginHtml {
+    text-transform:capitalize;
+}
+
+.signUpHtml {
+    text-transform:capitalize;
+}
+.loginHtml .tab{
+    font-size:22px;
+    margin-right:15px;
+    padding-bottom:5px;
+    margin:0 15px 10px 0;
+    display:inline-block;
+    border-bottom:2px solid transparent;
+}
+
+.signUpHtml .tab{
+    font-size:22px;
+    margin-right:15px;
+    padding-bottom:5px;
+    margin:0 15px 10px 0;
+    display:inline-block;
+    border-bottom:2px solid transparent;
+}
+.loginHtml .signIn:checked + .tab{
+    color:#888;
+    border-color:#0fbdb6;
+}
+
+.signUpHtml .signIn:checked + .tab{
+    color:#888;
+    border-color:#0fbdb6;
+}
+.footLnk{
+    text-align: inherit;
+    font-size: 10px;
+    color: #aaa;
+}
+.button{
+    background:#0fbdb6!important;
+    border:none;
+    padding:15px 20px;
+    border-radius:6px;
+    background:rgba(255,255,255,.1);
+    width:100%;
+    color:#fff;
+    display:block;
+    margin-bottom:6px;
+    text-transform:uppercase;
+    cursor: pointer
+}
+
+.button:hover{
+    background:#259e66!important;
+    transition:all .4s linear;
+}
+.input{
+    width:100%;
+    display:block;
+    margin-bottom:6px;
+    border:none;
+    padding:10px 20px;
+    border-radius:6px;
+    margin-top: 6px;
+    background: #e0dfdf63;
+    outline: none
+}
+.label{
+    color:#aaa;
+    font-size:12px;
+    text-transform:capitalize;
+}
+.group{
+    margin-bottom: 15px;
+}
+
+/*home page css*/
+
+.headerImage h1 {
+    font-family: 'Playfair Display', serif;
+    color: white;
+    font-size: 48px;
+    text-align: center;
+    margin-top: 96px
+}
+
+.headerImage {
+    position: relative;
+    z-index: 1;
+    margin-top: 60px;
+    width: 100%;
+    height: auto;
+    min-height: 330px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    padding-top: 33px;
+
+}
+.headerImage::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(86, 99, 115, 0.65);
+    z-index: -1;
+}
+.fontAwesome{
+    color:red
+}
+
+.editForm{
+    width:408px;
+    margin: 0 auto;
+    margin-top:150px
+}
+
+.heading{
+    font-size: 20px;
+    color: #888;
+    border-bottom:2px solid transparent;
+
+}
+.aboutPartHeading{
+    text-align: center;
+    margin-top:50px
+}
+
+.aboutPartHeading h1{
+    color: #333;
+    font-size:50px;
+    font-weight: 400
+}
+
+.aboutPartHeading p{
+    color: #777;
+    font-weight: 400;
+    font-size:14px;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+.aboutPartHeadingFull{
+   width:1200px !important;
+    margin:0 auto !important;
+    margin-top:60px !important;
+    margin-bottom: 35px !important;
+}
+
+.headingDashboard{
+   width:1200px !important;
+    margin:0 auto !important;
+    margin-top:7px !important;
+    margin-bottom: 35px !important;
+    background: #fff;
+    padding: 17px;
+    box-shadow:rgba(0, 0, 0, 0.24) 0px 0px 0px 0px, rgba(0, 0, 0, 0.19) 0px 4px 7px 0px
+}
+
+.DashboardText{
+   width:1200px !important;
+    margin:0 auto !important;
+    margin-top:60px !important;
+    background: #fff;
+    box-shadow:rgba(0, 0, 0, 0.24) 0px 0px 0px 0px, rgba(0, 0, 0, 0.19) 0px 4px 7px 0px;
+    padding: 6px;
+}
+
+.DashboardText p{
+    font-weight:bold;
+    margin-bottom:0;
+    text-align:center;
+    margin-top: 3px
+}
+
+.aboutPartHeadingRight{
+    height: 400px;
+    padding-top: 0 !important;
+}
+
+.aboutPartHeadingRight p{
+    padding: 10px;
+    height: auto;
+    text-align: justify;
+    font-size:17px;
+    font-family: 'Open Sans', sans-serif;
+    color:#333;
+    font-weight:400;
+    line-height: 1.5;
+    padding-top: 0;
+}
+
+.dashboardRightRight{
+    height: 400px;
+    padding-top: 0 !important;
+    border-left: 1px dotted #ccc;
+}
+
+.dashboardRightRight p{
+    padding: 10px;
+    height: auto;
+    text-align: justify;
+    font-size:17px;
+    font-family: 'Open Sans', sans-serif;
+    color:#333;
+    font-weight:400;
+    line-height: 1.5;
+    padding-top: 0;
+}
+
+.aboutPartHeadingRight .warnText{
+    font-family: 'Open Sans', sans-serif;
+    color:#bb8038;
+    font-weight:400;
+    line-height: 1.5;
+}
+
+.aboutPartHeadingLeft{
+    background: url(./images/image3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    position: relative;
+    z-index: 1;
+}
+
+.aboutPartHeadingLeft::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 60, 134, 0.24);
+    z-index: -1;
+}
+
+.headerImage button {
+    padding: 15px 35px;
+    color: white;
+    background-color: #da3525;
+    border: 0px solid white;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.headerImage button:hover {
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid #da3525;
+    transition:all .4s linear;
+}
+
+.markPartHeadingFull{
+    width:1000px !important;
+    margin:0 auto !important;
+    margin-top:60px !important;
+    margin-bottom:60px !important;
+}
+
+.markPartRight p{
+    padding: 10px;
+    height: auto;
+    text-align: justify;
+    font-size:17px;
+    font-family: 'Open Sans', sans-serif;
+    color:#333;
+    font-weight:400;
+    line-height: 1.5;
+    padding-top: 0;
+}
+
+.markPartLeft{
+    margin: 0px auto;
+    text-align: center;
+    background: rgb(255, 255, 255);
+    padding: 30px !important;
+    width: 500px;
+    box-shadow:rgba(0, 0, 0, 0.24) 0px 0px 0px 0px, rgba(0, 0, 0, 0.19) 0px 4px 7px 0px
+}
+
+.markPartLeftImage{
+    margin: 0px auto;
+    text-align: center;
+    background: rgb(255, 255, 255);
+    padding: 30px !important;
+    width: 500px;
+    margin-right:20px !important;
+    box-shadow:rgba(0, 0, 0, 0.24) 0px 0px 0px 0px, rgba(0, 0, 0, 0.19) 0px 4px 7px 0px
+}
+
+.markPartRightImage{
+    margin: 0px auto;
+    text-align: center;
+    background: rgb(255, 255, 255);
+    padding: 30px !important;
+    width: 500px;
+    box-shadow:rgba(0, 0, 0, 0.24) 0px 0px 0px 0px, rgba(0, 0, 0, 0.19) 0px 4px 7px 0px
+}
+
+.markPartRightImage .file{
+    margin-left: 116px;
+    border: 0px;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.markPartLeft p{
+   color: #383232;
+    font-weight: 400;
+}
+.markPartLeft .file{
+    margin-left: 116px;
+    border: 0px;
+    text-align: center;
+    margin-top: 25px;
+}
+.markPartHeadingFull button{
+    padding: 7px 28px;
+    color: white;
+    background-color: #da3525;
+    border: 0px solid white;
+    border-radius: 5px;
+    margin-top: 29px;
+}
+
+.markPartHeadingFull button:hover{
+    cursor: pointer;
+    background-color: #5aab5a;
+    transition:all .1s linear;
+}
+
+.navbarMenu{
+    position: relative;
+    top: 8px;
+    padding-right: 30px;
+    border-right: 1px solid #888;
+    cursor: pointer;
+    right: 28px;
+}
+
+.navbarMenu:hover{
+    position: relative;
+    top: 8px;
+    padding-right: 30px;
+    border-right: 1px solid #888;
+    cursor: pointer;
+    color: #ce4133;
+    transition:all .1s linear;
+
+}
+
+.logo{
+    text-align: left;
+    margin-top: 5px !important;
+    margin-left: 4% !important;
+}
+.logo img{
+    height: 25px;
+    margin-left: 5%;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.voteCastText p{
+    padding: 10px;
+    height: auto;
+    text-align: justify;
+    font-size: 17px;
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    font-weight: 400;
+    line-height: 1.5;
+    padding-top: 0;
+}
+
+.voteCastText span{
+    color: #000;
+    font-weight: bold;
+}
+
+.voteButton{
+    padding: 0px 40px;
+    background: #2e77cc;
+    color: #fff;
+    border: 0;
+    border-radius: 3px;
+}
+.voteButton:hover{
+    padding: 0px 40px;
+    color: #fff;
+    border: 0;
+    border-radius: 3px;
+    background: #ce4133;
+    transition:all .1s linear;
+
+}
+
+.afterVoteoteCast{
+    margin: 0 auto;
+    padding: 10px;
+    width:900px;
+    background: beige;
+    margin-top: 55px;
+}
+.afterVoteoteCast p{
+   color:green;
+    text-align: center;
+    margin-top: 20px;
+}
+.voteGraph{
+    margin-top: 33px;
+    margin-bottom: 50px;
+}
+
+.pieChartCssHeading{
+    margin-top: 28px !important;
+}
+
+.pieChartCssHeading .pieChartCssHeading1st{
+    padding:0px 9px;
+    background:rgb(106, 33, 53);
+    margin-right:11px
+}
+
+.pieChartCssHeading .pieChartCssHeading2nd{
+    padding:0px 9px;
+    background:rgb(227, 134, 39);
+    margin-right:11px
+}
+
+.pieChartCssMain{
+    margin-top: 28px !important;
+}
+
+.zeroVote{
+    text-align: center;
+    margin: 117px;
+    padding: 10px;
+    background: #d9d9d9;
+    color: #757575;
+}
+
+@media screen and (max-width: 1000px) {
+    .show{
+        display: none;
+    }
+    .hide{
+        display: block;
+    }
+}

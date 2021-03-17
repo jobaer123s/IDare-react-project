@@ -1,0 +1,39 @@
+body{
+  padding-right: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+ }
+ 
+ 
+ .fullSet {
+   background: url(../images/dining2.jpg);
+   background-size: cover;
+   background-repeat: no-repeat;
+     background-position: center;
+   height: 350px;
+   position: relative;
+   z-index: 1;
+  text-align: center;
+   /* background-attachment: fixed; */
+ }
+
+
+ 
+ 
+ .fullSet::before {
+   position: absolute;
+   content: "";
+   height: 100%;
+   width: 100%;
+   top: 0;
+   left: 0;
+   background-color: rgba(252, 87, 84, 0.6);
+   z-index: -1;
+ }
+ .textfields {
+   border: 1px solid #ccc;
+ }
+ .allsetButton button:hover{
+
+  color: #DC2723 !important;
+  background-color:#efeaea !important
+}

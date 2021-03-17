@@ -1,0 +1,23 @@
+### STAGE 1: Build ###
+FROM node:10.15.2-alpine as node_build
+RUN apk update && \
+    apk add git
+# set working directory
+RUN mkdir /var/www/sheraspace/admin_sheraspace_ui -p
+WORKDIR /var/www/sheraspace/admin_sheraspace_ui
+
+# add `/usr/src/app/node_modules/.bin` to $PATH
+ENV PATH /var/www/sheraspace/admin_sheraspace_ui/node_modules/.bin:$PATH
+RUN env NODE_OPTIONS=--max_old_space_size=8096
+ADD . /var/www/sheraspace/admin_sheraspace_ui
+RUN npm install
+RUN apiUrl=https://qaapi.palettebd.com npm run build && apiUrl=https://qaapi.palettebd.com npm run export
+
+### STAGE 2: Production Environment ###
+FROM nginx:1.13.12-alpine
+COPY --from=node_build /var/www/sheraspace/admin_sheraspace_ui/out /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
+
+
