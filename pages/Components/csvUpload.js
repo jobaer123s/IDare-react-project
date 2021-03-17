@@ -85,15 +85,16 @@ class EditAccount extends React.Component {
             userParamId:this.props.userParamId,
             employeeParamId:this.props.employeeParamId,
 
-            companyList:[],
-            userTypeList:[],
-            userCompanyList:[],
+            yAllValue:[],
+            xAllValue:[],
+            zAllValue:[],
             csvData: [],
             isLocked:'',
             projectName: JSON.parse(localStorage.getItem( "projectName")),
             projectDescription: JSON.parse(localStorage.getItem( "projectDescription")),
             client: JSON.parse(localStorage.getItem( "client")),
             contractor: JSON.parse(localStorage.getItem( "contractor")),
+            maxX: JSON.parse(localStorage.getItem( "maxX")),
 
         };
 
@@ -118,65 +119,70 @@ class EditAccount extends React.Component {
 
     handleForce = (data, fileInfo) =>{
         this.setState({csvData:data,csvDataShow:true})
-        console.log(data, fileInfo)
+        console.log(data, fileInfo);
+        console.log('jh');
+
+        var xAllValue = [...this.state.xAllValue];
+        var yAllValue = [...this.state.yAllValue];
+        var zAllValue = [...this.state.zAllValue];
+
+        data.map((item) =>{
+            console.log('xAllValue',parseFloat(item.X));
+            xAllValue.push(parseFloat(item.X))
+            yAllValue.push(parseFloat(item.Y))
+            zAllValue.push(parseFloat(item.Z))
+        });
+        // console.log('xAllValue',xAllValue)
+        // console.log(Math.max(1, 3, 2));
+
+        var maxX = this.maxValue(xAllValue);
+        var minX = this.minValue(xAllValue);
+        console.log('maxX',maxX)
+        console.log('minX',minX)
+
+        var maxY = this.maxValue(yAllValue);
+        var minY = this.minValue(yAllValue);
+        console.log('maxY',maxY)
+        console.log('minY',minY)
+
+        var maxZ = this.maxValue(zAllValue);
+        var minZ = this.minValue(zAllValue);
+        console.log('maxZ',maxZ)
+        console.log('minZ',minZ)
+
+        localStorage.setItem( "maxX",  JSON.stringify(maxX));
+        localStorage.setItem( "minX",  JSON.stringify(minX));
+        localStorage.setItem( "maxY",  JSON.stringify(maxY));
+        localStorage.setItem( "minY",  JSON.stringify(minY));
+        localStorage.setItem( "maxZ",  JSON.stringify(maxZ));
+        localStorage.setItem( "minZ",  JSON.stringify(minZ));
+
+        this.setState({maxX: JSON.parse(localStorage.getItem( "maxX"))})
+        this.setState({minX: JSON.parse(localStorage.getItem( "minX"))})
+        this.setState({maxY: JSON.parse(localStorage.getItem( "maxY"))})
+        this.setState({minY: JSON.parse(localStorage.getItem( "minY"))})
+        this.setState({maxZ: JSON.parse(localStorage.getItem( "maxZ"))})
+        this.setState({minZ: JSON.parse(localStorage.getItem( "minZ"))})
     };
+
+    maxValue = (data) =>{
+        var max = data.reduce(function(a, b) {
+            return Math.max(a, b);
+        });
+        return max
+    }
+
+    minValue = (data) =>{
+        var min = data.reduce(function(a, b) {
+            return Math.min(a, b);
+        });
+        return min
+    }
 
 
 
 
     render () {
-
-        const data = [
-            {
-                name: ' A',
-                uv: 4000,
-                pv: 2400,
-                amt: 2400,
-            },
-            {
-                name: ' B',
-                uv: 3000,
-                pv: 1398,
-                amt: 2210,
-            },
-            {
-                name: ' C',
-                uv: 2000,
-                pv: 9800,
-                amt: 2290,
-            },
-            {
-                name: ' D',
-                uv: 2780,
-                pv: 3908,
-                amt: 2000,
-            },
-            {
-                name: ' E',
-                uv: 1890,
-                pv: 4800,
-                amt: 2181,
-            },
-            {
-                name: ' F',
-                uv: 2390,
-                pv: 3800,
-                amt: 2500,
-            },
-            {
-                name: ' G',
-                uv: 3490,
-                pv: 4300,
-                amt: 2100,
-            },
-        ];
-
-        const data4 = [
-            { value: 'Apple', color: '#ff7300' },
-            { value: 'Samsung', color: '#bb7300' },
-            { value: 'Huawei', color: '#bb7300' },
-            { value: 'Sony', type: 'none' },
-        ];
 
         return(
             <div>
@@ -256,6 +262,45 @@ class EditAccount extends React.Component {
                                         </div>
                                     </Grid>
 
+                                    <Grid style={{marginTop:'10px', padding:'10px', background:'#fff',marginRight:'6px',marginLeft:'0'}} container spacing={24}>
+
+                                        <Grid style={{paddingBottom:'0'}} item xs={6}>
+                                            <p className="onlineText">max_X <span style={{color:'red'}}>*</span></p>
+                                            <input className="inputCss" onChange={this.handleProjectName} value={this.state.maxX}
+                                                   type="text" placeholder=""  />
+                                        </Grid>
+
+                                        <Grid style={{paddingBottom:'0'}}  item xs={6}>
+                                            <p className="onlineText">min_X <span style={{color:'red'}}>*</span></p>
+                                            <input className="inputCss" onChange={this.handleClient} value={this.state.minX}
+                                                   type="text" placeholder=""  />
+                                        </Grid>
+
+                                        <Grid style={{paddingBottom:'0',paddingTop:'0'}}  item xs={6}>
+                                            <p className="onlineText">max_Y <span style={{color:'red'}}>*</span></p>
+                                            <input className="inputCss" onChange={this.handleClient} value={this.state.maxY}
+                                                   type="text" placeholder=""  />
+                                        </Grid>
+
+                                        <Grid style={{paddingBottom:'0',paddingTop:'0'}} item xs={6}>
+                                            <p className="onlineText">min_Y</p>
+                                            <input className="inputCss" onChange={this.handleContractor} value={this.state.minY}
+                                                   type="text" placeholder=""  />
+                                        </Grid>
+
+                                        <Grid style={{paddingBottom:'0',paddingTop:'0'}}  item xs={6}>
+                                            <p className="onlineText">max_Z <span style={{color:'red'}}>*</span></p>
+                                            <input className="inputCss" onChange={this.handleClient} value={this.state.maxZ}
+                                                   type="text" placeholder=""  />
+                                        </Grid>
+
+                                        <Grid style={{paddingBottom:'0',paddingTop:'0'}} item xs={6}>
+                                            <p className="onlineText">min_Z</p>
+                                            <input className="inputCss" onChange={this.handleContractor} value={this.state.minZ}
+                                                   type="text" placeholder=""  />
+                                        </Grid>
+                                    </Grid>
+
                                 </Grid>
                             </div>
                         <Grid style={{width:'95%', margin:'0 auto'}} container spacing={24}>
@@ -295,6 +340,18 @@ class EditAccount extends React.Component {
 
                     <style jsx>
                         {`
+                        
+                        .onlineText{
+                          margin: 7px 0px;
+                          color: #000
+                        }
+                        
+                        .inputCss{
+                          border:1px solid #ccc;
+                          width:100%;
+                          padding:5px;
+                          border-radius: 3px
+                        }
                                 
                              
                                 input:checked + .slider {

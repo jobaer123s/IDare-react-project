@@ -130,7 +130,8 @@ class EditAccount extends React.Component {
         localStorage.setItem( "contractor",  JSON.stringify(this.state.contractor));
         this.openCsvTab()
     }
-    // onClick show receivable
+
+    // onClick show input tab
 
     openInputTab() {
         console.log('test openReceivableTab')
@@ -139,13 +140,17 @@ class EditAccount extends React.Component {
         });
     }
 
-    // onClick show paid
+    // onClick show csv part
 
     openCsvTab() {
         console.log('test openPasswordTab')
         this.setState({
             inputTab: false, csvTab: true
         });
+        localStorage.setItem( "projectName",  JSON.stringify(this.state.projectName));
+        localStorage.setItem( "projectDescription",  JSON.stringify(this.state.projectDescription));
+        localStorage.setItem( "client",  JSON.stringify(this.state.client));
+        localStorage.setItem( "contractor",  JSON.stringify(this.state.contractor));
     }
 
 
@@ -181,7 +186,7 @@ class EditAccount extends React.Component {
                                 <Grid style={{marginTop:'0px'}} container spacing={24}>
 
                                     <Grid style={{paddingBottom:'0'}} item xs={12}>
-                                        <p className="onlineText">Project name <span style={{color:'#004E7C'}}>*</span></p>
+                                        <p className="onlineText">Project name <span style={{color:'red'}}>*</span></p>
                                         <input className="inputCss" onChange={this.handleProjectName} value={this.state.projectName}
                                                type="text" placeholder=""  />
                                     </Grid>
@@ -192,7 +197,7 @@ class EditAccount extends React.Component {
                                     </Grid>
 
                                     <Grid style={{paddingBottom:'0',paddingTop:'0'}}  item xs={12}>
-                                        <p className="onlineText">Client <span style={{color:'#004E7C'}}>*</span></p>
+                                        <p className="onlineText">Client <span style={{color:'red'}}>*</span></p>
                                         <input className="inputCss" onChange={this.handleClient} value={this.state.client}
                                                type="text" placeholder=""  />
                                     </Grid>

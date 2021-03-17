@@ -137,6 +137,8 @@ class Navbar extends React.Component {
             value: 0,
             open: false,
             isLoggedIn: false,
+            resultTab: this.props.resultTab === undefined?false:this.props.resultTab,
+            homeTab: this.props.homeTab=== undefined?true:this.props.homeTab,
             companyId:this.props.companyParam,
             ioRegOrgName:"",
             firstName:"",
@@ -147,16 +149,30 @@ class Navbar extends React.Component {
             userCompanyList:[],
 
         };
-
-
     }
-
-
-
 
     componentDidMount() {
 
     }
+
+    // onClick show home
+
+    openHomeTab() {
+        console.log('test openReceivableTab')
+        this.setState({
+            homeTab: true, resultTab: false
+        });
+    }
+
+    // onClick show home
+
+    openResultTab() {
+        console.log('test openReceivableTab')
+        this.setState({
+            homeTab: false, resultTab: true
+        });
+    }
+
 
 
     render() {
@@ -187,7 +203,7 @@ class Navbar extends React.Component {
                     menuOpenButton={
                         <Grid container spacing={24} style={{ padding: '6px ', backgroundColor: '#fff', position:'fixed',top:'0', zIndex:'100' }}>
                             <Grid onClick={() => this.saveUserActivity('Home page')} item xs={3}>
-                                <Link href="/setting/userManagement/userManage/multipleAccount"><a><img src={palette} style={{
+                                <Link href="/Components/contact"><a><img src={palette} style={{
                                     height: "33px", width: "120px",
                                     marginTop: "7px", marginLeft: "33%"
                                 }} /></a></Link>
@@ -203,7 +219,7 @@ class Navbar extends React.Component {
                     }
                     menuCloseButton={ <Grid container spacing={24} style={{ padding:'6px ', backgroundColor:'#fff', position:'fixed',top:'0', zIndex:'100'}}>
                         <Grid item xs={3}>
-                            <Link href="/setting/userManagement/userManage/multipleAccount"><a><img src={palette} style={{height: "33px", width: "120px",
+                            <Link href="/Components/contact"><a><img src={palette} style={{height: "33px", width: "120px",
                                 marginTop: "7px", marginLeft: "33%"}} /></a></Link>
                         </Grid>
                         <Grid item xs={9}>
@@ -224,8 +240,8 @@ class Navbar extends React.Component {
 
 
 
-                                <Grid onClick={() => this.saveUserActivity('Home page')} style={{textAlign:'left'}} item xs={3}  className={allset.shera} >
-                                    <Link href="/setting/userManagement/userManage/multipleAccount"><a><img src={palette} style={{height: "44px",
+                                <Grid  style={{textAlign:'left'}} item xs={3}  className={allset.shera} >
+                                    <Link href="/Components/contact"><a><img src={palette} style={{height: "44px",
                                         marginLeft: "24%"}} /></a></Link>
                                 </Grid>
 
@@ -235,14 +251,20 @@ class Navbar extends React.Component {
 
 
                                     {/* navbar menu start */}
-                                    <div title="Palette account" className={card.userAccount} style={{marginRight:'13%', float:'right', marginTop:'9px',
-                                        display:'flex', padding:'11px 11px 0px', cursor:'pointer', borderRadius:'7px'}}>
+                                    <div   style={{marginRight:'13%', float:'right', marginTop:'9px', padding:'11px 11px 0px', cursor:'pointer', borderRadius:'7px'}}>
+                                        <Link href="/Components/contact">
+                                        <span onClick={this.openHomeTab.bind(this)} style={{position:'relative', top:'-5px', right:'40px',
+                                            padding:'4px',color: this.state.homeTab===true?'#004E7C':'#000',fontWeight: this.state.homeTab===true?'bold':'400'}}
+                                              className={card.userAccount} ><span >Home</span>
+                                        </span>
+                                        </Link>
 
-                                        <span className="popup"  onClick={() => this.myFunction()}>
-
-                                            <span className={card.userAccount} style={{position:'relative', top:'-5px'}}>Result</span>
-
-                                            </span>
+                                        <Link href="/Components/result">
+                                        <span onClick={this.openResultTab.bind(this)} style={{position:'relative', top:'-5px',
+                                            padding:'4px',color: this.state.resultTab===true?'#004E7C':'#000',fontWeight: this.state.resultTab===true?'bold':'400'}}
+                                              className={card.userAccount} ><span >Result</span>
+                                        </span>
+                                        </Link>
 
                                     </div>
 
