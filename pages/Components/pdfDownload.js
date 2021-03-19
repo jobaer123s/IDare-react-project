@@ -130,155 +130,89 @@ class PdfDownload extends React.Component {
     render () {
 
         return(
-            <Document>
-                <Page wrap size="A4" style={this.props.fontFamily === '' ?
-                    {paddingTop: '15px', paddingBottom: '65px'} :
-                    {
-                        paddingTop: '15px',
-                        paddingBottom: '65px',
-                        fontFamily: this.props.fontFamily
-                    }}>
+                <Document>
+                    <Page wrap size="A4" style={this.props.fontFamily === '' ?
+                        {paddingTop: '15px', paddingBottom: '65px'} :
+                        {
+                            paddingTop: '15px',
+                            paddingBottom: '65px',
+                            fontFamily: this.props.fontFamily
+                        }}>
 
+                        <View  style={styles.headText}>
+                            <Text style={{textAligh: 'center'}}>Input data in PDF</Text>
+                        </View>
 
-                    <View style={styles.table}>
-                        <View style={styles.tableRowHead}>
+                        <View >
+                            <View style={styles.tableRowHead}>
 
-                            <View style={styles.tableCol}>
-                                <Text style={styles.tableCellHead}><Text
-                                    style={{fontFamily: this.props.fontFamilyBold}}>Location</Text></Text>
+                                <View  style={styles.tableColLeft}>
+                                    <Text  style={styles.tableCellHead}><Text
+                                        style={{fontFamily: this.props.fontFamilyBold}}>max_X</Text></Text>
+                                </View>
+
+                                <View style={styles.tableCol}>
+                                    <Text style={styles.tableCellHead}><Text
+                                        style={{fontFamily: this.props.fontFamilyBold}}>min_X</Text></Text>
+                                </View>
+
+                                <View  style={styles.tableCol}>
+                                    <Text style={styles.tableCellHead}><Text
+                                        style={{fontFamily: this.props.fontFamilyBold}}>max_Y</Text></Text>
+                                </View>
+
+                                <View   style={styles.tableCol}>
+                                    <Text  style={styles.tableCellHead}><Text
+                                        style={{fontFamily: this.props.fontFamilyBold}}>min_Y</Text></Text>
+                                </View>
+
+                                <View style={styles.tableCol}>
+                                    <Text style={styles.tableCellHead}><Text
+                                        style={{fontFamily: this.props.fontFamilyBold}}>max_Z</Text></Text>
+                                </View>
+
+                                <View  style={styles.tableCol}>
+                                    <Text  style={styles.tableCellHead}><Text
+                                        style={{fontFamily: this.props.fontFamilyBold}}>min_Z</Text></Text>
+                                </View>
+
                             </View>
 
+                            <View style={styles.tableRow}>
 
-                            <View style={styles.tableColService}>
-                                <Text style={styles.tableCellHead}><Text
-                                    style={{fontFamily: this.props.fontFamilyBold}}>Service</Text></Text>
+                                <View style={styles.tableColLeftBelow}>
+                                    <Text style={styles.tableCell}>{this.props.maxX}</Text>
+                                </View>
+
+                                <View style={styles.tableColBelow}>
+                                    <Text style={styles.tableCell}>{this.props.minX}</Text>
+                                </View>
+
+                                <View style={styles.tableColBelow}>
+                                    <Text style={styles.tableCell}>{this.props.maxY}</Text>
+                                </View>
+
+                                <View style={styles.tableColBelow}>
+                                    <Text style={styles.tableCell}>{this.props.minY}</Text>
+                                </View>
+
+                                <View style={styles.tableColBelow}>
+                                    <Text style={styles.tableCell}>{this.props.maxZ}</Text>
+                                </View>
+
+                                <View style={styles.tableColBelow}>
+                                    <Text style={styles.tableCell}>{this.props.minZ}</Text>
+                                </View>
+
                             </View>
-
-
-                            <View style={styles.tableColService}>
-                                <Text style={styles.tableCellHead}><Text
-                                    style={{fontFamily: this.props.fontFamilyBold}}>Item</Text></Text>
-                             </View>
-
-                            <View style={styles.tableColService}>
-                                <Text style={styles.tableCellHead}><Text
-                                    style={{fontFamily: this.props.fontFamilyBold}}>Item</Text></Text>
-                            </View>
-
-
-
 
                         </View>
 
-                        {/*this.props.itemListByInvoice.map((item, key) =>*/}
-                        {/*    <View style={styles.tableRow}>*/}
 
-                        {/*        {this.props.checkLocation === false ?*/}
-                        {/*            null :*/}
-                        {/*            <View style={styles.tableCol}>*/}
-                        {/*                {item.field1 === true ? null : <Text*/}
-                        {/*                    style={styles.tableCell}>{item.visitLocation}</Text>}*/}
-                        {/*            </View>*/}
-                        {/*        }*/}
+                    </Page>
 
-                        {/*        {this.props.checkService === true ?*/}
-                        {/*            null :*/}
-                        {/*            <View style={styles.tableColService}>*/}
-                        {/*                <Text*/}
-                        {/*                    style={styles.tableCell}>{item.parentdata}</Text>*/}
-                        {/*            </View>*/}
-                        {/*        }*/}
+                </Document>
 
-                        {/*        {this.props.checkItem === true ?*/}
-                        {/*            null :*/}
-                        {/*            <View style={styles.tableColService}>*/}
-                        {/*                <Text*/}
-                        {/*                    style={styles.tableCell}>{item.levelData}</Text>*/}
-                        {/*                {item.field4 === true ? null :*/}
-                        {/*                    item.description === null ? null :*/}
-                        {/*                        <Text*/}
-                        {/*                            style={styles.tableCellDetails}>Description: {item.description}</Text>*/}
-                        {/*                }*/}
-                        {/*            </View>*/}
-                        {/*        }*/}
-
-
-                        {/*        {this.props.checkPrice === true ?*/}
-                        {/*            null :*/}
-                        {/*            item.field6 === true ?*/}
-                        {/*                <View style={styles.tableCol}>*/}
-
-                        {/*                </View> :*/}
-                        {/*                <View style={styles.tableCol}>*/}
-                        {/*                    <Text style={styles.tableCellTotal}>*/}
-
-                        {/*                        {currencySign === '৳'?*/}
-                        {/*                            <Image*/}
-                        {/*                                style={{*/}
-                        {/*                                    height: '10px',*/}
-                        {/*                                    marginLeft: '10px',*/}
-                        {/*                                    marginTop: '0px'*/}
-                        {/*                                }}*/}
-                        {/*                                src={taka}*/}
-                        {/*                                cache={false}*/}
-                        {/*                                allowDangerousPaths={true}/> :*/}
-
-                        {/*                            <Text style={{paddingRight:'10px'}}>{currencySign } </Text>*/}
-                        {/*                        }*/}
-
-                        {/*                        { item.price2}</Text>*/}
-                        {/*                </View>*/}
-                        {/*        }*/}
-
-                        {/*        {this.props.checkQuantity === true ?*/}
-                        {/*            null :*/}
-                        {/*            item.field2 === true ?*/}
-                        {/*                <View style={styles.tableColQuantity}>*/}
-
-                        {/*                </View> :*/}
-                        {/*                <View style={styles.tableColQuantity}>*/}
-
-                        {/*                    <Text*/}
-                        {/*                        style={styles.tableCell}>{item.quantity} </Text>*/}
-
-                        {/*                </View>*/}
-                        {/*        }*/}
-
-                        {/*        {this.props.checkUom === true ?*/}
-                        {/*            null :*/}
-                        {/*            <View style={styles.tableColUnit}>*/}
-                        {/*                <Text style={styles.tableCell}>*/}
-                        {/*                    {item.field3 === true ? null : this.props.checkUom === true ? null : item.mouName}*/}
-                        {/*                </Text>*/}
-                        {/*            </View>*/}
-                        {/*        }*/}
-
-                        {/*        <View style={styles.tableCol}>*/}
-                        {/*            <Text style={styles.tableCellTotal}>*/}
-                        {/*                {currencySign === '৳'?*/}
-                        {/*                    <Image*/}
-                        {/*                        style={{*/}
-                        {/*                            height: '10px',*/}
-                        {/*                            marginLeft: '10px',*/}
-                        {/*                            marginTop: '0px'*/}
-                        {/*                        }}*/}
-                        {/*                        src={taka}*/}
-                        {/*                        cache={false}*/}
-                        {/*                        allowDangerousPaths={true}/> :*/}
-
-                        {/*                    <Text style={{paddingRight:'10px'}}>{currencySign } </Text>*/}
-                        {/*                }{item.price3}</Text>*/}
-                        {/*        </View>*/}
-
-                        {/*    </View>*/}
-                        {/*)*/}
-
-                    </View>
-
-
-                </Page>
-
-            </Document>
         );
     }
 }
@@ -310,110 +244,6 @@ const styles = StyleSheet.create({
         fontSize: 24,
         textAlign: 'center',
     },
-    author: {
-        fontSize: 12,
-        textAlign: 'left',
-        marginBottom: 15,
-        borderBottom:'1 solid #ccc',
-        padding:10,
-        marginLeft:10
-    },
-    subtitle: {
-        fontSize: 18,
-        margin: 12,
-    },
-
-    gridFlex: {
-        padding: 10,
-        flexDirection: 'row',
-        marginLeft:25,
-        border: '1 solid #ccc',
-        marginTop:30,
-        marginRight:25,
-        fontWeight: 600,
-        backgroundColor:'#f6f6f6',
-        fontSize: 11,
-    },
-
-    gridFlexQuotation: {
-        flexDirection: 'row',
-    },
-
-    gridFlexMap: {
-        padding: 10,
-        flexDirection: 'row',
-        marginLeft:25,
-        border: '1 solid #ccc',
-        marginRight:25,
-        borderTop: 0
-    },
-
-
-    gridFlexValue:{
-        width:100,
-        marginRight:20,
-        fontSize: 11,
-    },
-
-    gridFlexValueQty:{
-        width:100,
-        marginRight:10,
-        fontSize: 11,
-    },
-
-    gridFlexValueQtyVtTx:{
-        width:58,
-        marginRight:10,
-        marginLeft:30,
-        fontSize: 11,
-        textAlign: 'left',
-    },
-
-    gridFlexValueVatTax2:{
-        width:78,
-        marginRight:10,
-        fontSize: 11,
-    },
-
-    gridFlexValueVatTax:{
-        width:78,
-        marginRight:0,
-        fontSize: 11,
-    },
-
-    gridFlexValueTotal:{
-        width:68,
-        marginRight:10,
-        fontSize: 11,
-    },
-
-    gridFlexValueItem:{
-        width:110,
-        marginRight:10,
-        fontSize: 11,
-        textAlign: 'left',
-
-    },
-    gridFlexValueDes:{
-
-        textAlign: 'justify',
-        fontSize:10,
-        color:'#858585'
-
-    },
-
-    description:{
-        width:78,
-        marginLeft:20,
-        fontSize: 11,
-    },
-
-    gridFlexValuePrice:{
-        width:50,
-        marginRight:20,
-        fontSize: 11,
-        textAlign: 'left'
-    },
 
     text: {
         margin: 12,
@@ -422,132 +252,19 @@ const styles = StyleSheet.create({
         marginLeft:25
     },
 
+    headText: {
+        margin: 12,
+        marginBottom: 20,
+        fontSize: 14,
+        textAlign: 'center',
+    },
+
     textNotesTitle: {
         margin: 12,
         fontSize: 12,
         textAlign: 'left',
         marginLeft:25,
         borderBottom: '1 solid #ccc',
-    },
-    paymentNotesTitle: {
-        margin: 12,
-        fontSize: 12,
-        textAlign: 'left',
-        marginLeft:25,
-        borderBottom: '1 solid #ccc',
-    },
-    subtotal: {
-        fontSize: 11,
-        textAlign: 'justify',
-        marginLeft:95,
-        marginTop: 4
-    },
-
-    paidAmount: {
-        fontSize: 12,
-        marginLeft:474,
-        marginTop: 10,
-
-    },
-
-    amountDue: {
-        fontSize: 12,
-        marginLeft:340,
-        marginTop: 10,
-
-    },
-
-    amountDueFinal: {
-        fontSize: 12,
-        marginLeft:420,
-        paddingRight:25,
-        paddingTop:10,
-    },
-
-    inWordTexts: {
-        fontSize: 12,
-        textAlign: 'right',
-        marginTop: 2
-    },
-
-    textSubtotalSpace: {
-        fontSize: 12,
-        textAlign: 'justify',
-        marginLeft:25,
-        width:300
-    },
-
-    inWordsSpace: {
-        fontSize: 14,
-        marginRight:30,
-    },
-
-    textNotes: {
-        fontSize: 12,
-        textAlign: 'justify',
-        marginLeft:25,
-        marginRight:25,
-        lineHeight: .7
-
-    },
-
-    paymentLink: {
-        fontSize: 11,
-        color: 'blue',
-        cursor:'pointer',
-        marginLeft:25,
-        width:'130px'
-    },
-    onlineInstruction: {
-        fontSize: 12,
-        marginLeft:25,
-        marginTop:10,
-    },
-    paymentText: {
-        fontSize: 12,
-        marginLeft:25,
-    },
-
-
-    textQuotaion1: {
-        margin: 12,
-        fontSize: 11,
-        textAlign: 'left',
-        marginLeft:25,
-        marginTop:15,
-        marginBottom:0,
-        width: '203px'
-    },
-
-    textQuotaion2: {
-        margin: 12,
-        fontSize: 11,
-        marginBottom:0,
-        marginLeft:0,
-        fontWeight:600,
-        width: '30px',
-        textAlign: 'right',
-        marginRight:33
-    },
-
-    textQuotaion3: {
-        margin: 12,
-        fontSize: 11,
-        marginBottom:0,
-        marginLeft:0,
-        marginRight:5,
-        width: '300px',
-        textAlign: 'right',
-    },
-
-    textQuotaion4: {
-        margin: 12,
-        fontSize: 11,
-        marginBottom:0,
-        marginLeft:0,
-        fontWeight:600,
-        textAlign: 'right',
-        width: '330px'
     },
 
     textDate: {
@@ -607,15 +324,6 @@ const styles = StyleSheet.create({
         color: 'grey',
     },
 
-    footer: {
-        position: 'absolute',
-        fontSize: 9,
-        bottom: 15,
-        left: 0,
-        right: 0,
-        textAlign: 'center',
-        color: '#a4a4a4',
-    },
 
     table: {
         display: "table",
@@ -624,9 +332,9 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRightWidth: 0,
         borderBottomWidth: 0,
-        marginLeft:25,
-        marginRight:25,
-        marginTop: 20,
+        // marginLeft:25,
+        // marginRight:25,
+        marginTop: 50,
 
     },
     tableRow: {
@@ -637,13 +345,42 @@ const styles = StyleSheet.create({
     tableRowHead: {
         margin: "auto",
         flexDirection: "row",
+        border: "1px solid #ccc",
     },
+
     tableCol: {
-        width: "25%",
+        width: "15%",
+        border: "1px solid #ccc",
+        borderWidth: 1,
+        borderLeftWidth: 0,
+        borderTopWidth: 1,
+        padding: 5
+    },
+
+    tableColBelow: {
+        width: "15%",
         border: "1px solid #ccc",
         borderWidth: 1,
         borderLeftWidth: 0,
         borderTopWidth: 0,
+        padding: 5
+    },
+
+    tableColLeft: {
+        width: "15%",
+        border: "1px solid #ccc",
+        borderWidth: 1,
+        borderLeftWidth: 1,
+        borderTopWidth:1,
+        padding: 5
+    },
+
+    tableColLeftBelow: {
+        width: "15%",
+        border: "1px solid #ccc",
+        borderWidth: 1,
+        borderLeftWidth: 1,
+        borderTopWidth:0,
         padding: 5
     },
 
@@ -697,7 +434,7 @@ const styles = StyleSheet.create({
     tableCellHead: {
         margin: "auto",
         fontSize: 11,
-        display: 'inline-block'
+        // display: 'inline-block'
     },
 
     leadName: {

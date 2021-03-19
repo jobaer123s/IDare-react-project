@@ -23,7 +23,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import getConfig from 'next/config'
-
+import CustomNotifier, {openCustomNotifierSnackbar} from './CustomNotifier';
 import {confirmAlert} from "react-confirm-alert";
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import Avatar from 'react-avatar';
@@ -128,6 +128,7 @@ class EditAccount extends React.Component {
         localStorage.setItem( "projectDescription",  JSON.stringify(this.state.projectDescription));
         localStorage.setItem( "client",  JSON.stringify(this.state.client));
         localStorage.setItem( "contractor",  JSON.stringify(this.state.contractor));
+        openCustomNotifierSnackbar({message: 'Data successfully added', duration: 3000, notifyType: 'success'});
         this.openCsvTab()
     }
 
@@ -161,6 +162,7 @@ class EditAccount extends React.Component {
             <div>
                 <div>
                     <Navbar/>
+                    <CustomNotifier/>
 
                     <div className="contentDiv">
 
@@ -221,7 +223,7 @@ class EditAccount extends React.Component {
                                                                      style={{color: "#fff", marginRight: "7px", marginLeft: "7px", paddingTop: "2px", width:'12px'}}/>
 
                                                 </button>:
-                                                <button type="button"
+                                                <button title="Please fill up all mandatory fields" type="button"
                                                         style={{padding: '9px 0px',width:'100px',height:'33px', fontSize:'14px', borderRadius:'3px', cursor:'no-drop', background:'#f4a7ae'}}>
                                                     Next
                                                     <FontAwesomeIcon icon={faArrowRight}

@@ -11,9 +11,10 @@ import axios from "axios";
 import Grid from '@material-ui/core/Grid';
 import Form from 'react-validation/build/form';
 import CSVReader from "react-csv-reader";
+import CustomNotifier, {openCustomNotifierSnackbar} from './CustomNotifier';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
+import {faArrowRight, faStroopwafel} from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -72,13 +73,19 @@ class EditAccount extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName :"",
-            lastName :"",
-            phone :"",
-            emailId:"",
-            userType:"",
-            password:"",
-            checkTwoFactor:false,
+            maxX :"",
+            maxY :"",
+            maxZ :"",
+            minX:"",
+            minY:"",
+            minZ:"",
+            enableSave:false,
+            enableX:false,
+            enableY:false,
+            enableZ:false,
+            enableX1:false,
+            enableY1:false,
+            enableZ1:false,
             passwordTab:false,
             accountTab:true,
 
@@ -94,16 +101,92 @@ class EditAccount extends React.Component {
             projectDescription: JSON.parse(localStorage.getItem( "projectDescription")),
             client: JSON.parse(localStorage.getItem( "client")),
             contractor: JSON.parse(localStorage.getItem( "contractor")),
-            maxX: JSON.parse(localStorage.getItem( "maxX")),
+            // maxX: JSON.parse(localStorage.getItem( "maxX")),
 
         };
 
-        this.handleFirstName = this.handleFirstName.bind(this);
+        this.handleMaxX = this.handleMaxX.bind(this);
+        this.handleMaxY = this.handleMaxY.bind(this);
+        this.handleMaxZ = this.handleMaxZ.bind(this);
+        this.handleMinX = this.handleMinX.bind(this);
+        this.handleMinY = this.handleMinY.bind(this);
+        this.handleMinZ = this.handleMinZ.bind(this);
 
     }
 
 
-    handleFirstName(event) {  this.setState({ firstName: event.target.value });    }
+    handleMaxX(event) {
+        this.setState({maxX: event.target.value, enableX: true},(response)=>{
+            this.checkEnableSave()
+        })
+        if(event.target.value.length < 1){
+            this.setState({enableX: false},(response)=>{
+                this.checkEnableSave()
+            })
+        }
+    }
+    handleMaxY(event) {
+        this.setState({maxY: event.target.value, enableY: true},(response)=>{
+            this.checkEnableSave()
+        })
+        if(event.target.value.length < 1){
+            this.setState({enableY: false},(response)=>{
+                this.checkEnableSave()
+            })
+        }
+    }
+    handleMaxZ(event) {
+        this.setState({maxZ: event.target.value, enableZ: true},(response)=>{
+            this.checkEnableSave()
+        })
+        if(event.target.value.length < 1){
+            this.setState({enableZ: false},(response)=>{
+                this.checkEnableSave()
+            })
+        }
+    }
+
+    handleMinX(event) {
+        this.setState({minX: event.target.value, enableX1: true},(response)=>{
+            this.checkEnableSave()
+        })
+        if(event.target.value.length < 1){
+            this.setState({enableX1: false},(response)=>{
+                this.checkEnableSave()
+            })
+        }
+    }
+    handleMinY(event) {
+        this.setState({minY: event.target.value, enableY1: true},(response)=>{
+            this.checkEnableSave()
+        })
+        if(event.target.value.length < 1){
+            this.setState({enableY1 : false},(response)=>{
+                this.checkEnableSave()
+            })
+        }
+    }
+    handleMinZ(event) {
+        this.setState({minZ: event.target.value, enableZ1: true},(response)=>{
+            this.checkEnableSave()
+        })
+        if(event.target.value.length < 1){
+            this.setState({enableZ1: false},(response)=>{
+                this.checkEnableSave()
+            })
+        }
+    }
+
+    checkEnableSave(){
+        console.log('checkEnableSave')
+        if(this.state.enableX===true && this.state.enableX1===true && this.state.enableY===true &&
+            this.state.enableY1===true && this.state.enableZ===true && this.state.enableZ1===true ){
+            this.setState({enableSave:true})
+        }
+        else{
+            this.setState({enableSave:false})
+        }
+    }
 
     // back
 
@@ -150,19 +233,8 @@ class EditAccount extends React.Component {
         console.log('maxZ',maxZ)
         console.log('minZ',minZ)
 
-        localStorage.setItem( "maxX",  JSON.stringify(maxX));
-        localStorage.setItem( "minX",  JSON.stringify(minX));
-        localStorage.setItem( "maxY",  JSON.stringify(maxY));
-        localStorage.setItem( "minY",  JSON.stringify(minY));
-        localStorage.setItem( "maxZ",  JSON.stringify(maxZ));
-        localStorage.setItem( "minZ",  JSON.stringify(minZ));
+        this.setState({maxX: maxX,minX: minX, maxY: maxY,minY: minY,maxZ: maxZ, minZ: minZ, enableSave:true})
 
-        this.setState({maxX: JSON.parse(localStorage.getItem( "maxX"))})
-        this.setState({minX: JSON.parse(localStorage.getItem( "minX"))})
-        this.setState({maxY: JSON.parse(localStorage.getItem( "maxY"))})
-        this.setState({minY: JSON.parse(localStorage.getItem( "minY"))})
-        this.setState({maxZ: JSON.parse(localStorage.getItem( "maxZ"))})
-        this.setState({minZ: JSON.parse(localStorage.getItem( "minZ"))})
     };
 
     maxValue = (data) =>{
@@ -179,6 +251,16 @@ class EditAccount extends React.Component {
         return min
     }
 
+    setLocalStorageData = () =>{
+        localStorage.setItem( "maxX",  JSON.stringify(this.state.maxX));
+        localStorage.setItem( "minX",  JSON.stringify(this.state.minX));
+        localStorage.setItem( "maxY",  JSON.stringify(this.state.maxY));
+        localStorage.setItem( "minY",  JSON.stringify(this.state.minY));
+        localStorage.setItem( "maxZ",  JSON.stringify(this.state.maxZ));
+        localStorage.setItem( "minZ",  JSON.stringify(this.state.minZ));
+        openCustomNotifierSnackbar({message: 'Data successfully added', duration: 3000, notifyType: 'success'});
+    }
+
 
 
 
@@ -186,6 +268,7 @@ class EditAccount extends React.Component {
 
         return(
             <div>
+                <CustomNotifier/>
                 <div>
                     <p style={{position:'absolute', top:'70px', left:'133px'}}>
                         <FontAwesomeIcon icon={faAngleLeft}
@@ -264,40 +347,61 @@ class EditAccount extends React.Component {
 
                                     <Grid style={{marginTop:'10px', padding:'10px', background:'#fff',marginRight:'6px',marginLeft:'0'}} container spacing={24}>
 
+
                                         <Grid style={{paddingBottom:'0'}} item xs={6}>
                                             <p className="onlineText">max_X <span style={{color:'red'}}>*</span></p>
-                                            <input className="inputCss" onChange={this.handleProjectName} value={this.state.maxX}
-                                                   type="text" placeholder=""  />
+                                            <input className="inputCss" onChange={this.handleMaxX} value={this.state.maxX}
+                                                   type="number" placeholder=""  />
                                         </Grid>
 
                                         <Grid style={{paddingBottom:'0'}}  item xs={6}>
                                             <p className="onlineText">min_X <span style={{color:'red'}}>*</span></p>
-                                            <input className="inputCss" onChange={this.handleClient} value={this.state.minX}
-                                                   type="text" placeholder=""  />
+                                            <input className="inputCss" onChange={this.handleMinX} value={this.state.minX}
+                                                   type="number" placeholder=""  />
                                         </Grid>
 
                                         <Grid style={{paddingBottom:'0',paddingTop:'0'}}  item xs={6}>
                                             <p className="onlineText">max_Y <span style={{color:'red'}}>*</span></p>
-                                            <input className="inputCss" onChange={this.handleClient} value={this.state.maxY}
-                                                   type="text" placeholder=""  />
+                                            <input className="inputCss" onChange={this.handleMaxY} value={this.state.maxY}
+                                                   type="number" placeholder=""  />
                                         </Grid>
 
                                         <Grid style={{paddingBottom:'0',paddingTop:'0'}} item xs={6}>
-                                            <p className="onlineText">min_Y</p>
-                                            <input className="inputCss" onChange={this.handleContractor} value={this.state.minY}
-                                                   type="text" placeholder=""  />
+                                            <p className="onlineText">min_Y  <span style={{color:'red'}}>*</span></p>
+                                            <input className="inputCss" onChange={this.handleMinY} value={this.state.minY}
+                                                   type="number" placeholder=""  />
                                         </Grid>
 
                                         <Grid style={{paddingBottom:'0',paddingTop:'0'}}  item xs={6}>
                                             <p className="onlineText">max_Z <span style={{color:'red'}}>*</span></p>
-                                            <input className="inputCss" onChange={this.handleClient} value={this.state.maxZ}
-                                                   type="text" placeholder=""  />
+                                            <input className="inputCss" onChange={this.handleMaxZ} value={this.state.maxZ}
+                                                   type="number" placeholder=""  />
                                         </Grid>
 
                                         <Grid style={{paddingBottom:'0',paddingTop:'0'}} item xs={6}>
-                                            <p className="onlineText">min_Z</p>
-                                            <input className="inputCss" onChange={this.handleContractor} value={this.state.minZ}
-                                                   type="text" placeholder=""  />
+                                            <p className="onlineText">min_Z  <span style={{color:'red'}}>*</span></p>
+                                            <input className="inputCss" onChange={this.handleMinZ} value={this.state.minZ}
+                                                   type="number" placeholder=""  />
+                                        </Grid>
+
+                                        <Grid item xs={12} style={{paddingTop:'22px'}} >
+                                            <div style={{}} >
+
+                                                {this.state.enableSave === true  ?
+                                                    <button type="button"
+                                                            onClick={()=>this.setLocalStorageData()}
+                                                            style={{padding: '9px 0px',width:'100px',height:'33px', fontSize:'14px', borderRadius:'3px'}}>
+                                                        Save
+                                                    </button>:
+                                                    <button title="Please fill up all mandatory fields" type="button"
+                                                            style={{padding: '9px 0px',width:'100px',height:'33px', fontSize:'14px', borderRadius:'3px', cursor:'no-drop', background:'#f4a7ae'}}>
+                                                        Save
+
+                                                    </button>
+
+                                                }
+
+                                            </div>
                                         </Grid>
                                     </Grid>
 

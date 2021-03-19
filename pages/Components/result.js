@@ -97,10 +97,15 @@ class Result extends React.Component {
             userCompanyList:[],
             csvData: [],
             isLocked:'',
-            projectName: JSON.parse(localStorage.getItem( "projectName")),
-            projectDescription: JSON.parse(localStorage.getItem( "projectDescription")),
-            client: JSON.parse(localStorage.getItem( "client")),
-            contractor: JSON.parse(localStorage.getItem( "contractor")),
+
+            maxX: JSON.parse(localStorage.getItem( "maxX")),
+            minX: JSON.parse(localStorage.getItem( "minX")),
+            maxY: JSON.parse(localStorage.getItem( "maxY")),
+            minY: JSON.parse(localStorage.getItem( "minY")),
+            maxZ: JSON.parse(localStorage.getItem( "maxZ")),
+            minZ: JSON.parse(localStorage.getItem( "minZ")),
+
+
 
         };
 
@@ -119,7 +124,7 @@ class Result extends React.Component {
 
 
     componentDidMount() {
-        console.log('componentDidMount colling ...',this.state.csvData);
+        console.log('componentDidMount colling ...',this.state.maxX);
 
     }
 
@@ -130,12 +135,12 @@ class Result extends React.Component {
 
     async getProps() {
         return ({
-            someString: [{abc:'ok', jh:'no'}],
-            billingAddress : this.state.billingAddress,
-            leadName : this.state.leadName,
-            salutation : this.state.salutation,
-            autoIdText : this.state.autoIdText,
-            amountTotal : this.state.amountTotal,
+            maxX: this.state.maxX,
+            minX: this.state.minX,
+            maxY: this.state.maxY,
+            minY: this.state.minY,
+            maxZ: this.state.maxZ,
+            minZ: this.state.minZ,
         });
     }
 
@@ -150,7 +155,7 @@ class Result extends React.Component {
         const asPdf = pdf([]); // {} is important, throws without an argument
         asPdf.updateContainer(doc);
         const blob = await asPdf.toBlob();
-        saveAs(blob, 'jh');
+        saveAs(blob, 'input_result_pdf');
     }
 
 
@@ -174,6 +179,10 @@ class Result extends React.Component {
 
                         <div className="formDiv">
 
+                            {this.state.maxX === null?
+                                <p style={{textAlign:'center', marginTop:'50px'}}>Upload a CSV file to show the result</p>
+                                :
+
                             <Grid container spacing={24}>
 
                                 {/*user 1st name*/}
@@ -182,7 +191,7 @@ class Result extends React.Component {
                                         style={{height: '20px', position:'relative', top:'3px' ,marginRight:'6px'}}
                                         src={dwnld}
                                     />
-                                    <span style={{color: "#424955", cursor:'pointer'}} onClick={()=>this.pdfDownload()}>  Download</span>
+                                    <span style={{color: "#424955", cursor:this.state.maxX === null?'no-drop':'pointer'}} onClick={()=>{this.state.maxX === null?null:this.pdfDownload()}}>  Download</span>
                                 </Grid>
 
                                 <Grid style={{marginRight:'6px', width:'535px', padding:'20px', background:'#fff', marginTop:'10px'}} item xs={12}>
@@ -200,8 +209,8 @@ class Result extends React.Component {
 
                                             <tr>
 
-                                                <td style={{border: '1px solid #ccc', padding: '5px'}}>{this.state.projectName}</td>
-                                                <td style={{border: '1px solid #ccc', padding: '5px'}}>{this.state.projectDescription}</td>
+                                                <td style={{border: '1px solid #ccc', padding: '5px'}}>{this.state.maxX}</td>
+                                                <td style={{border: '1px solid #ccc', padding: '5px'}}>{this.state.minX}</td>
 
                                             </tr>
 
@@ -215,8 +224,8 @@ class Result extends React.Component {
                                             </tr>
                                             <tr>
 
-                                                <td style={{border: '1px solid #ccc', padding: '5px'}}>{this.state.client}</td>
-                                                <td style={{border: '1px solid #ccc', padding: '5px'}}>{this.state.contractor}</td>
+                                                <td style={{border: '1px solid #ccc', padding: '5px'}}>{this.state.maxY}</td>
+                                                <td style={{border: '1px solid #ccc', padding: '5px'}}>{this.state.minY}</td>
 
                                             </tr>
 
@@ -230,8 +239,8 @@ class Result extends React.Component {
                                             </tr>
                                             <tr>
 
-                                                <td style={{border: '1px solid #ccc', padding: '5px'}}>{this.state.client}</td>
-                                                <td style={{border: '1px solid #ccc', padding: '5px'}}>{this.state.contractor}</td>
+                                                <td style={{border: '1px solid #ccc', padding: '5px'}}>{this.state.maxZ}</td>
+                                                <td style={{border: '1px solid #ccc', padding: '5px'}}>{this.state.minZ}</td>
 
                                             </tr>
 
@@ -242,6 +251,7 @@ class Result extends React.Component {
 
 
                             </Grid>
+                                }
                         </div>
 
 
