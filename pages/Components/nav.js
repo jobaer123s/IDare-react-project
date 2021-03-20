@@ -203,7 +203,7 @@ class Navbar extends React.Component {
                     menuOpenButton={
                         <Grid container spacing={24} style={{ padding: '6px ', backgroundColor: '#fff', position:'fixed',top:'0', zIndex:'100' }}>
                             <Grid onClick={() => this.saveUserActivity('Home page')} item xs={3}>
-                                <Link href="/Components/contact"><a><img src={palette} style={{
+                                <Link href="/Components/project"><a><img src={palette} style={{
                                     height: "33px", width: "120px",
                                     marginTop: "7px", marginLeft: "33%"
                                 }} /></a></Link>
@@ -219,7 +219,7 @@ class Navbar extends React.Component {
                     }
                     menuCloseButton={ <Grid container spacing={24} style={{ padding:'6px ', backgroundColor:'#fff', position:'fixed',top:'0', zIndex:'100'}}>
                         <Grid item xs={3}>
-                            <Link href="/Components/contact"><a><img src={palette} style={{height: "33px", width: "120px",
+                            <Link href="/Components/project"><a><img src={palette} style={{height: "33px", width: "120px",
                                 marginTop: "7px", marginLeft: "33%"}} /></a></Link>
                         </Grid>
                         <Grid item xs={9}>
@@ -238,21 +238,18 @@ class Navbar extends React.Component {
                             <Grid container className={allset.navbarGrid}  style={{ backgroundColor: "#fff",position: "fixed", top: "0px", width: "100%", zIndex: "100",
                                 boxShadow: "0 0 0 0",padding:'6px'}}>
 
-
-
                                 <Grid  style={{textAlign:'left'}} item xs={3}  className={allset.shera} >
-                                    <Link href="/Components/contact"><a><img src={palette} style={{height: "44px",
+                                    <Link href="/Components/project"><a><img src={palette} style={{height: "44px",
                                         marginLeft: "24%"}} /></a></Link>
                                 </Grid>
 
-
                                 <Grid item xs={9}  style={{ backgroundColor: "#fff", color: "#222222", boxShadow: "0 0 0 0"}}>
 
-
-
                                     {/* navbar menu start */}
+
                                     <div   style={{marginRight:'13%', float:'right', marginTop:'9px', padding:'11px 11px 0px', cursor:'pointer', borderRadius:'7px'}}>
-                                        <Link href="/Components/contact">
+
+                                        <Link href="/Components/project">
                                         <span onClick={this.openHomeTab.bind(this)} style={{position:'relative', top:'-5px', right:'40px',
                                             padding:'4px',color: this.state.homeTab===true?'#004E7C':'#000',fontWeight: this.state.homeTab===true?'bold':'400'}}
                                               className={card.userAccount} ><span >Home</span>

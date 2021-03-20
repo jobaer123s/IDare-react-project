@@ -114,6 +114,8 @@ class EditAccount extends React.Component {
 
     }
 
+    // handle maxX input data
+
 
     handleMaxX(event) {
         this.setState({maxX: event.target.value, enableX: true},(response)=>{
@@ -125,6 +127,9 @@ class EditAccount extends React.Component {
             })
         }
     }
+
+    // handle maxY input data
+
     handleMaxY(event) {
         this.setState({maxY: event.target.value, enableY: true},(response)=>{
             this.checkEnableSave()
@@ -135,6 +140,9 @@ class EditAccount extends React.Component {
             })
         }
     }
+
+    // handle maxZ input data
+
     handleMaxZ(event) {
         this.setState({maxZ: event.target.value, enableZ: true},(response)=>{
             this.checkEnableSave()
@@ -146,6 +154,8 @@ class EditAccount extends React.Component {
         }
     }
 
+    // handle MinX input data
+
     handleMinX(event) {
         this.setState({minX: event.target.value, enableX1: true},(response)=>{
             this.checkEnableSave()
@@ -156,6 +166,9 @@ class EditAccount extends React.Component {
             })
         }
     }
+
+    // handle MinY input data
+
     handleMinY(event) {
         this.setState({minY: event.target.value, enableY1: true},(response)=>{
             this.checkEnableSave()
@@ -166,6 +179,7 @@ class EditAccount extends React.Component {
             })
         }
     }
+
     handleMinZ(event) {
         this.setState({minZ: event.target.value, enableZ1: true},(response)=>{
             this.checkEnableSave()
@@ -176,6 +190,8 @@ class EditAccount extends React.Component {
             })
         }
     }
+
+    // this function will check save is enable or not
 
     checkEnableSave(){
         console.log('checkEnableSave')
@@ -188,19 +204,19 @@ class EditAccount extends React.Component {
         }
     }
 
-    // back
+    // back previous page
 
     backPage() {
         window.history.back()
     }
 
-
     componentDidMount() {
         console.log('componentDidMount colling ...',this.state.csvData);
-
     }
 
-    handleForce = (data, fileInfo) =>{
+    // handle File Upload and find max min value
+
+    handleFileUpload = (data, fileInfo) =>{
         this.setState({csvData:data,csvDataShow:true})
         console.log(data, fileInfo);
         console.log('jh');
@@ -237,19 +253,25 @@ class EditAccount extends React.Component {
 
     };
 
+    // find max value from csv file
+
     maxValue = (data) =>{
         var max = data.reduce(function(a, b) {
             return Math.max(a, b);
         });
         return max
-    }
+    };
+
+    // find min value from csv file
 
     minValue = (data) =>{
         var min = data.reduce(function(a, b) {
             return Math.min(a, b);
         });
         return min
-    }
+    };
+
+    // add data in localstorage
 
     setLocalStorageData = () =>{
         localStorage.setItem( "maxX",  JSON.stringify(this.state.maxX));
@@ -259,9 +281,7 @@ class EditAccount extends React.Component {
         localStorage.setItem( "maxZ",  JSON.stringify(this.state.maxZ));
         localStorage.setItem( "minZ",  JSON.stringify(this.state.minZ));
         openCustomNotifierSnackbar({message: 'Data successfully added', duration: 3000, notifyType: 'success'});
-    }
-
-
+    };
 
 
     render () {
@@ -319,29 +339,18 @@ class EditAccount extends React.Component {
                                                 </tr>
 
                                             </table>
-
                                         </div>
                                     </Grid>
+
                                     <Grid style={{marginRight:'6px', padding:'20px', background:'#fff', marginTop:'10px'}} item xs={12}>
                                         <p style={{color:'#000'}}>Select CSV file :</p>
                                         <div className="container">
                                             <CSVReader
                                                 cssClass="react-csv-input"
-                                                onFileLoaded={this.handleForce}
+                                                onFileLoaded={this.handleFileUpload}
                                                 parserOptions={papaparseOptions}
                                             />
 
-                                            {/*{*/}
-                                            {/*    this.state.csvData.map((company, key) =>*/}
-
-                                            {/*        <div>*/}
-                                            {/*            {company.X}*/}
-                                            {/*            {company.Y}*/}
-                                            {/*            {company.Z}*/}
-                                            {/*        </div>*/}
-                                            {/*    )*/}
-                                            {/*}*/}
-                                            {/*<p>and then open the console</p>*/}
                                         </div>
                                     </Grid>
 
@@ -471,115 +480,105 @@ class EditAccount extends React.Component {
                                   -ms-transform: translateX(20px);
                                   transform: translateX(20px);
                                 }
-                                
-                                /* Rounded sliders */
-                                .slider.round {
-                                  border-radius: 34px;
-                                }
-                                
-                                .slider.round:before {
-                                  border-radius: 50%;
-                                }
+                            
                     
                                   .tooltip {
-                position: relative;
-                display: inline-block;
-               
-            }
-
-               
-                    .contentDiv {
-                        padding: 20px 0px;
-                    }
-
-                    .formDiv {
-                        width: 600px;
-                        margin: auto;
-                        text-align: left;
-                        padding: 25px 45px;
-                        border-radius: 7px;
-                       
-                    }
-
-                    h1 {
-                        color: #ef5350;
-                        margin-bottom: 35px;
-                        font-weight: 300;
-                        font-size: 27px;
-                        font-family: "Roboto", "Helvetica", "Arial", "sans-serif";
-                    }
-
-                    p {
-                        color: #9D9D9D;
-                        font-size: 14px;
-                        margin-bottom: 10px;
-                        margin-top: 0px;
-                        font-family: "Roboto", "Helvetica", "Arial", "sans-serif";
-                    }
-
-                    
-
-                    .buttonDiv {
-                        text-align: center;
-                        margin-top: 23px;
-                        margin-bottom: 35px;
-                    }
-
-                    button {
-                        margin: auto;
-                        background-color: #ef5350;
-                        color: white;
-                        border-radius: 5px;
-                        outline: 0px;
-                        border: 0px;
-                        padding: 12px 60px;
-                        font-size: 20px;
-                        font-family: "Roboto", "Helvetica", "Arial", "sans-serif";
-                    }
-
-                    input:focus {
-                        outline: 0px;
-                    }
-
-                    button:hover {
-                        cursor: pointer;
-                        background-color: #DC2723;
-                    }
-
-                    @media screen and (max-width: 600px) {
-                        .contentDiv {
-                            padding: 45px 30px;
-                        }
-
-                        .formDiv {
-                            width: 100%;
-                        }
-
-                        button {
-                            width: 100%;
-                            padding: 8px 60px;
-                        }
-                    }
-
-                    @media screen and (max-width: 430px) {
-                        .contentDiv {
-                            padding: 45px 20px;
-                        }
-
-                        .formDiv {
-                            width: 100%;
-                            padding: 25px 25px;
-                        }
-                    }
-
-                    @media screen and (max-width: 330px) {
-                        p {
-                            font-size: 17px;
-                        }
-
-                        h1 {
-                            font-size: 23px;
-                        }
+                                    position: relative;
+                                    display: inline-block;
+                                   
+                                }
+            
+                           
+                                .contentDiv {
+                                    padding: 20px 0px;
+                                }
+            
+                                .formDiv {
+                                    width: 600px;
+                                    margin: auto;
+                                    text-align: left;
+                                    padding: 25px 45px;
+                                    border-radius: 7px;
+                                   
+                                }
+            
+                                h1 {
+                                    color: #ef5350;
+                                    margin-bottom: 35px;
+                                    font-weight: 300;
+                                    font-size: 27px;
+                                    font-family: "Roboto", "Helvetica", "Arial", "sans-serif";
+                                }
+            
+                                p {
+                                    color: #9D9D9D;
+                                    font-size: 14px;
+                                    margin-bottom: 10px;
+                                    margin-top: 0px;
+                                    font-family: "Roboto", "Helvetica", "Arial", "sans-serif";
+                                }
+            
+                                
+            
+                                .buttonDiv {
+                                    text-align: center;
+                                    margin-top: 23px;
+                                    margin-bottom: 35px;
+                                }
+            
+                                button {
+                                    margin: auto;
+                                    background-color: #ef5350;
+                                    color: white;
+                                    border-radius: 5px;
+                                    outline: 0px;
+                                    border: 0px;
+                                    padding: 12px 60px;
+                                    font-size: 20px;
+                                    font-family: "Roboto", "Helvetica", "Arial", "sans-serif";
+                                }
+            
+                              
+            
+                                button:hover {
+                                    cursor: pointer;
+                                    background-color: #DC2723;
+                                }
+            
+                                @media screen and (max-width: 600px) {
+                                    .contentDiv {
+                                        padding: 45px 30px;
+                                    }
+            
+                                    .formDiv {
+                                        width: 100%;
+                                    }
+            
+                                    button {
+                                        width: 100%;
+                                        padding: 8px 60px;
+                                    }
+                                }
+            
+                                @media screen and (max-width: 430px) {
+                                    .contentDiv {
+                                        padding: 45px 20px;
+                                    }
+            
+                                    .formDiv {
+                                        width: 100%;
+                                        padding: 25px 25px;
+                                    }
+                                }
+            
+                                @media screen and (max-width: 330px) {
+                                    p {
+                                        font-size: 17px;
+                                    }
+            
+                                    h1 {
+                                        font-size: 23px;
+                                    }
                     }
               `}
                     </style>

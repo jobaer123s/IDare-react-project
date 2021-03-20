@@ -4,8 +4,7 @@ import React from 'react';
 
 
 
-import Home from './Components/contact';
-import login from './Components/home.css'
+import Home from './Components/project';
 import {faEyeSlash, faStroopwafel} from '@fortawesome/free-solid-svg-icons'
 import NetworkDetector from './internetError';
 
@@ -77,7 +76,6 @@ class App extends React.Component {
             <div >
                 <NetworkDetector/>
                 <Home/>
-                <div className={login.show}></div>
 
                 <div className={card.loaderForLoginPge}></div>
 

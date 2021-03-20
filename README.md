@@ -1,11 +1,11 @@
 
 
-### install 
-npm install
-npm i react-csv-reader
-npm install recharts
-npm install @react-pdf/renderer --save
-npm i file-saver
+# install 
+### npm install
+### npm i react-csv-reader
+### npm install recharts
+### npm install @react-pdf/renderer --save
+### npm i file-saver
 
 ### run
 # in windows 10 and ubuntu

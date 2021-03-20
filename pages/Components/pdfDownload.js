@@ -8,12 +8,6 @@ import { withStyles } from '@material-ui/core/styles';
 import ReactPDF, {Document, Font, Image, Page, PDFDownloadLink, StyleSheet, Text, View, Link,pdf} from '@react-pdf/renderer';
 import { PDFViewer } from '@react-pdf/renderer';
 
-import Navbar from './nav';
-import axios from "axios";
-import Grid from '@material-ui/core/Grid';
-import Form from 'react-validation/build/form';
-import CSVReader from "react-csv-reader";
-import dwnld from "../../static/images/dwnld.png";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
@@ -48,22 +42,7 @@ const email = (value) => {
         return <span className="form-error is-visible" style={{color:'#ff433f', display:'block', marginTop:'5px'}}>{value} is not a valid email!</span>;
     }
 };
-//
-// const styles = theme => ({
-//     root: {
-//         backgroundColor: '#fafafa',
-//         width: '87%',
-//     },
-//
-//     roots: {
-//         backgroundColor: '#fafafa',
-//         width: '90%',
-//     },
-//     indicator: {
-//         backgroundColor: '#ef5350',
-//     },
-//
-// });
+
 
 class PdfDownload extends React.Component {
 

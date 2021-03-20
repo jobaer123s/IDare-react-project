@@ -166,6 +166,8 @@ class EditAccount extends React.Component {
 
                     <div className="contentDiv">
 
+                        {/*steps bar*/}
+
                         <div style={{ display:'flex', marginTop:'20px', marginBottom:'10px', width:'500px', margin:'0 auto'}} className="w3-bar w3-black">
                             <p onClick={this.openInputTab.bind(this)} style={{fontSize: '14px', marginTop: '6px',
                                 fontWeight:'bold', cursor:'pointer', color: this.state.inputTab===true?'#004E7C':'#000',
@@ -215,6 +217,9 @@ class EditAccount extends React.Component {
                                         <div style={{}} >
 
                                             {this.state.enableProject === true && this.state.enableClient === true ?
+
+                                                // enabled button
+
                                                 <button type="button"
                                                         onClick={()=>this.dataSetToLocalStorage()}
                                                         style={{padding: '9px 0px',width:'100px',height:'33px', fontSize:'14px', borderRadius:'3px'}}>
@@ -223,6 +228,9 @@ class EditAccount extends React.Component {
                                                                      style={{color: "#fff", marginRight: "7px", marginLeft: "7px", paddingTop: "2px", width:'12px'}}/>
 
                                                 </button>:
+
+                                                // disabled button
+
                                                 <button title="Please fill up all mandatory fields" type="button"
                                                         style={{padding: '9px 0px',width:'100px',height:'33px', fontSize:'14px', borderRadius:'3px', cursor:'no-drop', background:'#f4a7ae'}}>
                                                     Next
